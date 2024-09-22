@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #ffffff; /* 0 0% 100% */
+    --foreground: #1c1b1b; /* 240 10% 3.9% */
+    --card: #ffffff; /* 0 0% 100% */
+    --card-foreground: #1c1b1b; /* 240 10% 3.9% */
+    --popover: #ffffff; /* 0 0% 100% */
+    --popover-foreground: #1c1b1b; /* 240 10% 3.9% */
+    --primary: #2d9c4b; /* 142.1 76.2% 36.3% */
+    --primary-foreground: #ffe7e9; /* 355.7 100% 97.3% */
+    --secondary: #eaeaf5; /* 240 4.8% 95.9% */
+    --secondary-foreground: #26292e; /* 240 5.9% 10% */
+    --muted: #eaeaf5; /* 240 4.8% 95.9% */
+    --muted-foreground: #767a83; /* 240 3.8% 46.1% */
+    --accent: #eaeaf5; /* 240 4.8% 95.9% */
+    --accent-foreground: #26292e; /* 240 5.9% 10% */
+    --destructive: #e63946; /* 0 84.2% 60.2% */
+    --destructive-foreground: #fafafa; /* 0 0% 98% */
+    --border: #e1e2e7; /* 240 5.9% 90% */
+    --input: #e1e2e7; /* 240 5.9% 90% */
+    --ring: #2d9c4b; /* 142.1 76.2% 36.3% */
+    --radius: 0.5rem;
+    --chart-1: #f7680c; /* 12 76% 61% */
+    --chart-2: #2b9c63; /* 173 58% 39% */
+    --chart-3: #226d8c; /* 197 37% 24% */
+    --chart-4: #66e6a6; /* 43 74% 66% */
+    --chart-5: #ffb74a; /* 27 87% 67% */
+  }
+
+  .dark {
+    --background: #141414; /* 20 14.3% 4.1% */
+    --foreground: #f2f2f2; /* 0 0% 95% */
+    --card: #2d2d2d; /* 24 9.8% 10% */
+    --card-foreground: #f2f2f2; /* 0 0% 95% */
+    --popover: #171717; /* 0 0% 9% */
+    --popover-foreground: #f2f2f2; /* 0 0% 95% */
+    --primary: #369d59; /* 142.1 70.6% 45.3% */
+    --primary-foreground: #0b3a03; /* 144.9 80.4% 10% */
+    --secondary: #26282b; /* 240 3.7% 15.9% */
+    --secondary-foreground: #fafafa; /* 0 0% 98% */
+    --muted: #262626; /* 0 0% 15% */
+    --muted-foreground: #9ea5b0; /* 240 5% 64.9% */
+    --accent: #2a2a2a; /* 12 6.5% 15.1% */
+    --accent-foreground: #fafafa; /* 0 0% 98% */
+    --destructive: #8d292e; /* 0 62.8% 30.6% */
+    --destructive-foreground: #fce7eb; /* 0 85.7% 97.3% */
+    --border: #26282b; /* 240 3.7% 15.9% */
+    --input: #26282b; /* 240 3.7% 15.9% */
+    --ring: #218f48; /* 142.4 71.8% 29.2% */
+    --chart-1: #4a90e2; /* 220 70% 50% */
+    --chart-2: #319a72; /* 160 60% 45% */
+    --chart-3: #ffae4b; /* 30 80% 55% */
+    --chart-4: #c27be3; /* 280 65% 60% */
+    --chart-5: #ff3366; /* 340 75% 55% */
+  }
+}
