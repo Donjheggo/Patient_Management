@@ -104,7 +104,7 @@ export default function AppointmentForm() {
         </Select>
       </View>
       {schedules && schedules.length === 0 && (
-        <Text className="font-semibold pl-2">No available schedule.</Text>
+        <Text className="font-semibold pl-2">No available schedule, please select another Doctor.</Text>
       )}
       {schedules && schedules.length > 0 && (
         <View>
