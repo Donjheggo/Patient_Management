@@ -22,22 +22,19 @@ export default function Screen() {
 
   return (
     <SafeAreaView className="h-full">
-      <ScrollView className="p-5">
-        <Text className="text-center font-semibold text-2xl">Doctors</Text>
-        <SearchBar/>
-        <View className="mt-5">
-          <FlatList
-            data={doctors}
-            renderItem={({ item, index }) => (
-              <DoctorCard key={index} item={item} />
-            )}
-            contentContainerStyle={{
-              flexDirection: "column",
-              gap: 10,
-            }}
-          />
-        </View>
-      </ScrollView>
+      <View className="p-5">
+        <Text className="text-center text-primary font-semibold text-2xl">Doctors</Text>
+        <SearchBar />
+      </View>
+      <FlatList
+        data={doctors}
+        renderItem={({ item, index }) => <DoctorCard key={index} item={item} />}
+        contentContainerStyle={{
+          flexDirection: "column",
+          gap: 10,
+          paddingHorizontal: 20,
+        }}
+      />
     </SafeAreaView>
   );
 }
