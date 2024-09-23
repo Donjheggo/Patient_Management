@@ -24,3 +24,25 @@ export async function GetDoctors(searchQuery: string) {
     }
   }
 }
+
+export async function GetDoctorsSchdeduleById(doctor_id: string) {
+  try {
+    const { data, error } = await supabase
+      .from("doctor_schedules")
+      .select("*")
+      .eq("doctor_id", doctor_id)
+
+    if (error) {
+      Alert.alert(error.message);
+      return [];
+    }
+
+    return data || [];
+  } catch (error) {
+    if (error instanceof Error) {
+      Alert.alert(error.message);
+      return [];
+    }
+  }
+}
+
