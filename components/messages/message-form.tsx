@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { Alert } from "react-native";
 import { SendMessage } from "~/lib/actions/message";
 import { useAuth } from "~/context/auth-context";
-import { type MessageT } from "~/messages";
+import type { MessageT } from "~/app/(tabs)/messages";
 
 export default function MessageForm() {
   const { user } = useAuth();
@@ -49,7 +49,7 @@ export default function MessageForm() {
         ref={textInputRef}
         multiline
         placeholder="Type a message..."
-        className="flex-1 border border-primary rounded-md px-3 py-2 text-primary-foreground dark:text-primary"
+        className="flex-1 border border-primary rounded-md px-3 py-2"
         value={form.message}
         onChangeText={(e) => setForm({ ...form, message: e })}
         onContentSizeChange={handleContentSizeChange}
@@ -61,7 +61,7 @@ export default function MessageForm() {
         variant="outline"
         className="ml-2 mt-auto border-0 bg-transparent"
       >
-        <SendHorizonal color="#B08968" size={30} />
+        <SendHorizonal color="#16a34a" size={30} />
       </Button>
     </View>
   );

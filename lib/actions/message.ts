@@ -1,6 +1,6 @@
 import { Alert } from "react-native";
 import { supabase } from "../supabase";
-import { MessageT } from "~/messages";
+import type { MessageT } from "~/app/(tabs)/messages";
 
 export async function SendMessage(form: MessageT) {
   try {
