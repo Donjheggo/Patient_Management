@@ -28,6 +28,7 @@ export default function Screen() {
           My Appointments
         </Text>
         <FlatList
+          showsVerticalScrollIndicator={false}
           data={appointments}
           renderItem={({ item, index }) => (
             <AppointmentCard item={item} key={index} />
@@ -35,7 +36,7 @@ export default function Screen() {
           contentContainerStyle={{
             marginTop: 20,
             gap: 13,
-            height: '100%'
+            paddingBottom: 50,
           }}
         />
       </View>

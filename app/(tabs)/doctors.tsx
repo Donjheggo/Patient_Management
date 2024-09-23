@@ -28,11 +28,13 @@ export default function Screen() {
       </View>
       <FlatList
         data={doctors}
+        showsVerticalScrollIndicator={false}
         renderItem={({ item, index }) => <DoctorCard key={index} item={item} />}
         contentContainerStyle={{
           flexDirection: "column",
           gap: 10,
           paddingHorizontal: 20,
+          paddingBottom: 50
         }}
       />
     </SafeAreaView>

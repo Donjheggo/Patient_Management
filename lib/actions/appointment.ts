@@ -36,7 +36,8 @@ export async function GetMyAppointments(patient_id: string) {
     const { data, error } = await supabase
       .from("appointments")
       .select("*")
-      .eq("patient_id", patient_id);
+      .eq("patient_id", patient_id)
+      .order("created_at", { ascending: false });
 
     if (error) {
       Alert.alert(error.message);
