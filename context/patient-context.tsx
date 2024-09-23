@@ -10,27 +10,39 @@ import { GetPatientById } from "~/lib/actions/patient";
 import { useAuth } from "./auth-context";
 export type PatientT = Tables<"patients">;
 
-const PatientContext = createContext<PatientT | null>(null);
+type PatientContext = {
+  patient: PatientT | null;
+  refetch: () => void;
+};
+
+const PatientContext = createContext<PatientContext>({
+  patient: null,
+  refetch: () => undefined
+});
 
 export default function PatientProvider({ children }: PropsWithChildren) {
   const { user } = useAuth();
   const [patient, setPatient] = useState<PatientT | null>(null);
 
-  useEffect(() => {
-    const fetchUserPatient = async () => {
-      if (user?.id) {
-        const response = await GetPatientById(user?.id || "");
-        if (response) {
-          setPatient(response || null);
-        }
+  const fetchUserPatient = async () => {
+    if (user?.id) {
+      const response = await GetPatientById(user?.id || "");
+      if (response) {
+        setPatient(response || null);
       }
-    };
+    }
+  };
 
+  useEffect(() => {
     fetchUserPatient();
   }, [user?.id]);
 
+  const refetch = async () => {
+    await fetchUserPatient();
+  };
+
   return (
-    <PatientContext.Provider value={patient}>
+    <PatientContext.Provider value={{ patient, refetch }}>
       {children}
     </PatientContext.Provider>
   );

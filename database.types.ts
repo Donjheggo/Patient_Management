@@ -11,37 +11,31 @@ export type Database = {
     Tables: {
       appointments: {
         Row: {
-          contact_number: number
           created_at: string
           doctor_id: string
-          id: number
-          name: string
+          id: string
+          patient_id: string
           reason: string
           schedule_id: string
           status: Database["public"]["Enums"]["APPOINTMENT_STATUS"]
-          user_id: string
         }
         Insert: {
-          contact_number: number
           created_at?: string
           doctor_id?: string
-          id?: number
-          name: string
+          id?: string
+          patient_id?: string
           reason: string
           schedule_id?: string
           status?: Database["public"]["Enums"]["APPOINTMENT_STATUS"]
-          user_id?: string
         }
         Update: {
-          contact_number?: number
           created_at?: string
           doctor_id?: string
-          id?: number
-          name?: string
+          id?: string
+          patient_id?: string
           reason?: string
           schedule_id?: string
           status?: Database["public"]["Enums"]["APPOINTMENT_STATUS"]
-          user_id?: string
         }
         Relationships: [
           {
@@ -52,17 +46,17 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "appointments_patient_id_fkey"
+            columns: ["patient_id"]
+            isOneToOne: false
+            referencedRelation: "patients"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "appointments_schedule_id_fkey"
             columns: ["schedule_id"]
             isOneToOne: false
             referencedRelation: "doctor_schedules"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "appointments_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
             referencedColumns: ["id"]
           },
         ]

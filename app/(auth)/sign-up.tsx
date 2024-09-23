@@ -6,7 +6,7 @@ import { Text } from "~/components/ui/text";
 import { Button } from "~/components/ui/button";
 import { Eye, EyeOff } from "lucide-react-native";
 import { supabase } from "~/lib/supabase";
-import { Link, router } from "expo-router";
+import { Link } from "expo-router";
 
 const SignUp = () => {
   const [isLoading, setLoading] = useState(false);
@@ -19,17 +19,13 @@ const SignUp = () => {
 
   async function signUpWithEmail() {
     setLoading(true);
-    const {
-      data: { session },
-      error,
-    } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email: form.email,
       password: form.password,
     });
 
     setLoading(false);
     if (error) Alert.alert(error.message);
-    if (session) router.replace("/(tabs)/book");
   }
 
   return (
@@ -88,7 +84,7 @@ const SignUp = () => {
       </Button>
       <Text className="dark:text-secondary">
         Already have an account?
-        <Link href="/sign-in" className="text-primary-foreground">
+        <Link href="/sign-in" className="text-primary">
           {" "}
           Sign in
         </Link>

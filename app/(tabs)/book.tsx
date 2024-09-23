@@ -4,7 +4,7 @@ import { usePatient } from "~/context/patient-context";
 import { Redirect } from "expo-router";
 
 export default function Screen() {
-  const patient = usePatient();
+  const { patient } = usePatient();
 
   if (!patient) {
     return <Redirect href="/(tabs)/patient-registration" />;
