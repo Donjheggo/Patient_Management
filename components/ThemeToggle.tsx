@@ -12,6 +12,7 @@ export function ThemeToggle() {
   const { isDarkColorScheme, setColorScheme } = useColorScheme();
   return (
     <Button
+      variant="outline"
       size="lg"
       onPress={() => {
         const newTheme = isDarkColorScheme ? "light" : "dark";
@@ -19,7 +20,7 @@ export function ThemeToggle() {
         setAndroidNavigationBar(newTheme);
         AsyncStorage.setItem("theme", newTheme);
       }}
-      className="mt-5 web:ring-offset-background web:transition-colors web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2"
+      className="mt-5 web:ring-offset-background border-primary bg-transparent web:transition-colors web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2"
     >
       {({ pressed }) => (
         <View
@@ -29,11 +30,11 @@ export function ThemeToggle() {
           )}
         >
           {isDarkColorScheme ? (
-            <MoonStar size={30} color="#eaeaf5" />
+            <MoonStar size={22} color="#16a34a" />
           ) : (
-            <Sun size={30} color="#eaeaf5" />
+            <Sun size={22} color="#16a34a" />
           )}
-          <Text style={{ fontSize: 20, marginLeft: 5 }}>Theme</Text>
+          <Text className="text-primary dark:text-primary" style={{ fontSize: 18, marginLeft: 5 }}>Theme</Text>
         </View>
       )}
     </Button>

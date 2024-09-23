@@ -15,7 +15,7 @@ export default function SearchBar() {
     <View className="relative justify-center mt-5">
       <Search style={styles.icon} />
       <Input
-        style={{ paddingLeft: 40, fontSize: 20 }}
+        style={{ paddingLeft: 40, fontSize: 17 }}
         className="dark:bg-black dark:text-white border border-primary"
         placeholder="Search name..."
         defaultValue={params.query}
