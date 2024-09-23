@@ -97,7 +97,7 @@ export default function RootLayout() {
                     ? false
                     : true,
                 headerLeft:
-                  pathname !== "/products" ? () => <BackButton /> : () => "",
+                  pathname !== "/book" ? () => <BackButton /> : () => "",
                 headerRight: () => <MessageButton />,
               }}
             />

@@ -10,7 +10,7 @@ export default function Screen() {
         <Image
           source={require("../assets/images/index.png")}
           resizeMode="contain"
-          style={{ width: 300, height: 160 }}
+          style={{ width: 500, height: 200 }}
         />
 
         <Text className="font-semibold text-xl text-center opacity-80 dark:text-white">
