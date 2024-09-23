@@ -3,7 +3,6 @@ import { User } from "lucide-react-native";
 import { NotebookPen, NotepadText, Hospital } from "lucide-react-native";
 import { useAuth } from "~/context/auth-context";
 import { usePathname } from "expo-router";
-import { usePatient } from "~/context/patient-context";
 
 export default function TabLayout() {
   const pathname = usePathname();
