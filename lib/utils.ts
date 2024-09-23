@@ -44,3 +44,13 @@ export const FormatDateTimeAgo = (date: Date) => {
     day: "numeric",
   });
 };
+
+export const formatScheduleDate = (dateString: string | undefined) => {
+  if (!dateString) return "Loading...";
+  const date = new Date(dateString);
+  return new Intl.DateTimeFormat("en-US", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  }).format(date);
+};
+

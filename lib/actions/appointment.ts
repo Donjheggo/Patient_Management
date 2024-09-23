@@ -1,6 +1,6 @@
 import { supabase } from "../supabase";
 import { Alert } from "react-native";
-import type { AppointmentT } from "~/components/appointments/appointment-form";
+import type { AppointmentT } from "~/components/book/appointment-form";
 
 export async function CreateAppointment(form: AppointmentT) {
   try {
@@ -27,6 +27,27 @@ export async function CreateAppointment(form: AppointmentT) {
     if (error instanceof Error) {
       Alert.alert(error.message);
       return false;
+    }
+  }
+}
+
+export async function GetMyAppointments(patient_id: string) {
+  try {
+    const { data, error } = await supabase
+      .from("appointments")
+      .select("*")
+      .eq("patient_id", patient_id);
+
+    if (error) {
+      Alert.alert(error.message);
+      return [];
+    }
+
+    return data || [];
+  } catch (error) {
+    if (error instanceof Error) {
+      Alert.alert(error.message);
+      return [];
     }
   }
 }

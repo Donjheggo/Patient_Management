@@ -2,7 +2,7 @@ import { SafeAreaView, ScrollView, View } from "react-native";
 import { Text } from "~/components/ui/text";
 import { usePatient } from "~/context/patient-context";
 import { Redirect } from "expo-router";
-import AppointmentForm from "~/components/appointments/appointment-form";
+import AppointmentForm from "~/components/book/appointment-form";
 
 export default function Screen() {
   const { patient } = usePatient();

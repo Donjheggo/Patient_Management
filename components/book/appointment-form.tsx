@@ -12,12 +12,13 @@ import { Input } from "../ui/input";
 import { useState, useEffect } from "react";
 import { usePatient } from "~/context/patient-context";
 import { DoctorsT } from "~/app/(tabs)/doctors";
-import { GetDoctors, GetDoctorsSchdeduleById } from "~/lib/actions/doctors";
+import { GetDoctors, GetDoctorSchedulesById } from "~/lib/actions/doctors";
 import { Tables } from "~/database.types";
 import { Text } from "../ui/text";
 import { Button } from "../ui/button";
 import { CreateAppointment } from "~/lib/actions/appointment";
 import { useRouter } from "expo-router";
+import { formatScheduleDate } from "~/lib/utils";
 
 export default function AppointmentForm() {
   const { patient } = usePatient();
@@ -43,7 +44,7 @@ export default function AppointmentForm() {
   useEffect(() => {
     const fetchDoctorSchedule = async () => {
       if (form.doctor_id) {
-        const data = await GetDoctorsSchdeduleById(form.doctor_id);
+        const data = await GetDoctorSchedulesById(form.doctor_id);
         if (data) setSchedules(data);
       }
     };
@@ -104,7 +105,9 @@ export default function AppointmentForm() {
         </Select>
       </View>
       {schedules && schedules.length === 0 && (
-        <Text className="font-semibold pl-2">No available schedule, please select another Doctor.</Text>
+        <Text className="font-semibold pl-2">
+          No available schedule, please select another Doctor.
+        </Text>
       )}
       {schedules && schedules.length > 0 && (
         <View>
@@ -120,7 +123,7 @@ export default function AppointmentForm() {
               })
             }
           >
-            <SelectTrigger>
+            <SelectTrigger style={{ height: 70 }}>
               <SelectValue
                 className="text-foreground dark:text-white text-sm native:text-lg"
                 placeholder="Select a doctor's schedule"
@@ -131,19 +134,11 @@ export default function AppointmentForm() {
                 {schedules?.map((item, index) => (
                   <SelectItem
                     key={index}
-                    label={`${new Date(
+                    label={`${formatScheduleDate(
                       item.start_time
-                    ).toLocaleString()} - ${new Date(
-                      item.end_time
-                    ).toLocaleString()}`}
+                    )} to \n${formatScheduleDate(item.end_time)}`}
                     value={item.id}
-                  >
-                    {`${new Date(
-                      item.start_time
-                    ).toLocaleString()} - ${new Date(
-                      item.end_time
-                    ).toLocaleString()}`}
-                  </SelectItem>
+                  ></SelectItem>
                 ))}
               </SelectGroup>
             </SelectContent>

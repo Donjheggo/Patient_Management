@@ -11,7 +11,7 @@ export async function GetDoctors(searchQuery: string) {
     const { data, error } = searchQuery
       ? await query.textSearch("name", searchQuery)
       : await query;
-      
+
     if (error) {
       Alert.alert(error.message);
       return [];
@@ -25,12 +25,12 @@ export async function GetDoctors(searchQuery: string) {
   }
 }
 
-export async function GetDoctorsSchdeduleById(doctor_id: string) {
+export async function GetDoctorSchedulesById(doctor_id: string) {
   try {
     const { data, error } = await supabase
       .from("doctor_schedules")
       .select("*")
-      .eq("doctor_id", doctor_id)
+      .eq("doctor_id", doctor_id);
 
     if (error) {
       Alert.alert(error.message);
@@ -46,3 +46,24 @@ export async function GetDoctorsSchdeduleById(doctor_id: string) {
   }
 }
 
+export async function GetDoctorById(doctor_id: string) {
+  try {
+    const { data, error } = await supabase
+      .from("doctors")
+      .select("*")
+      .eq("id", doctor_id)
+      .single();
+
+    if (error) {
+      Alert.alert(error.message);
+      return false;
+    }
+
+    return data;
+  } catch (error) {
+    if (error instanceof Error) {
+      Alert.alert(error.message);
+      return false;
+    }
+  }
+}
