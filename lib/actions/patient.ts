@@ -1,6 +1,5 @@
 import { supabase } from "../supabase";
 import { Alert } from "react-native";
-import { Tables } from "~/database.types";
 import { PatientFormT } from "~/app/(tabs)/patient-registration";
 
 export async function GetPatientById(user_id: string) {
