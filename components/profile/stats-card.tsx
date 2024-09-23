@@ -9,9 +9,9 @@ export default function StatsCard({
   number: number;
 }) {
   return (
-    <View className="w-full border border-primary mt-5 rounded-lg">
-      <Text className="text-2xl text-primary font-semibold text-center p-2">{number}</Text>
-      <Text className="text-xl text-center p-2">{name}</Text>
+    <View className="w-full border border-primary mt-4 rounded-lg" style={{padding: 10}}>
+      <Text className="text-2xl text-primary font-semibold text-center">{number}</Text>
+      <Text className="text-xl text-center">{name}</Text>
     </View>
   );
 }

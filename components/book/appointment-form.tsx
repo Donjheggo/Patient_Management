@@ -54,7 +54,16 @@ export default function AppointmentForm() {
 
   const handleSubmit = async () => {
     const response = await CreateAppointment(form);
-    if (response) router.push("/(tabs)/appointments");
+    if (response) {
+      setForm({
+        patient_id: patient?.id || "",
+        reason: "",
+        doctor_id: "",
+        schedule_id: "",
+        status: "PENDING",
+      });
+      router.push("/(tabs)/appointments");
+    }
   };
 
   return (
@@ -79,7 +88,7 @@ export default function AppointmentForm() {
           Doctor
         </Label>
         <Select
-          defaultValue={{ value: "", label: "Select a Doctor" }}
+          value={{value: form.doctor_id, label: 'Select a Doctor'}}
           onValueChange={(value) =>
             setForm({
               ...form,
@@ -115,7 +124,7 @@ export default function AppointmentForm() {
             Doctor's Schedule
           </Label>
           <Select
-            defaultValue={{ value: "", label: "Select a Schedule" }}
+            value={{ value: form.schedule_id, label: "Select a Schedule" }}
             onValueChange={(value) =>
               setForm({
                 ...form,

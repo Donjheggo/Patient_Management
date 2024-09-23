@@ -34,7 +34,7 @@ export default function Screen() {
           )}
           contentContainerStyle={{
             marginTop: 20,
-            gap: 10,
+            gap: 13,
             height: '100%'
           }}
         />

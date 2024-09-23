@@ -20,7 +20,7 @@ export function ThemeToggle() {
         setAndroidNavigationBar(newTheme);
         AsyncStorage.setItem("theme", newTheme);
       }}
-      className="mt-5 web:ring-offset-background border-primary bg-transparent web:transition-colors web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2"
+      className="mt-4 web:ring-offset-background border-primary bg-transparent web:transition-colors web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2"
     >
       {({ pressed }) => (
         <View

@@ -13,6 +13,7 @@ export default function Screen() {
   const { patient } = usePatient();
   const [data, setData] = useState<StatsT>({
     pending: 0,
+    accepted: 0,
     completed: 0,
     total: 0,
   });
@@ -25,12 +26,16 @@ export default function Screen() {
           const pending = data.filter(
             (item: AppointmentT) => item.status === "PENDING"
           ).length;
+          const accepted = data.filter(
+            (item: AppointmentT) => item.status === "ACCEPTED"
+          ).length;
           const completed = data.filter(
             (item: AppointmentT) => item.status === "COMPLETED"
           ).length;
           const total = data.length;
           setData({
             pending: pending,
+            accepted: accepted,
             completed: completed,
             total: total,
           });
@@ -47,6 +52,7 @@ export default function Screen() {
         <View className="p-5">
           <ProfileCard />
           <StatsCard name="Pending Appointments" number={data.pending} />
+          <StatsCard name="Accepted Appoinments" number={data.accepted} />
           <StatsCard name="Completed Appoinments" number={data.completed} />
           <StatsCard name="Total Appointments" number={data.total} />
           <View style={{ marginTop: 2 }}>
@@ -61,6 +67,7 @@ export default function Screen() {
 
 type StatsT = {
   pending: number;
+  accepted: number;
   completed: number;
   total: number;
 };

@@ -12,7 +12,7 @@ export default function SignoutButton() {
     <Button
       size="lg"
       onPress={handleSignout}
-      className="w-full border border-primary mt-5 rounded-lg flex-row items-center"
+      className="w-full border border-primary mt-4 rounded-lg flex-row items-center"
     >
       <LogOut size={20} color="#eaeaf5" />
       <Text className="ml-2" style={{ fontSize: 18 }}>
