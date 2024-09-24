@@ -84,7 +84,7 @@ const SignUp = () => {
       </Button>
       <Text className="dark:text-secondary">
         Already have an account?
-        <Link href="/sign-in" className="text-primary-foreground">
+        <Link href="/sign-in">
           {" "}
           Sign in
         </Link>

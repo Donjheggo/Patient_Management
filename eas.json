@@ -14,9 +14,9 @@
         "buildType": "apk"
       },
       "env": {
-        "EXPO_PUBLIC_ADMIN_ID": "25b3ab2c-6252-4256-b29e-a34669604497",
-        "EXPO_PUBLIC_SUPABASE_URL": "https://stpdfhpaakjlgplkxcum.supabase.co",
-        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN0cGRmaHBhYWtqbGdwbGt4Y3VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjcwMjc3NjIsImV4cCI6MjA0MjYwMzc2Mn0.Y74ufCEQ9VQHCJLHk6t5dG_4MREMmClbdiPA5m5WY7M"
+        "EXPO_PUBLIC_ADMIN_ID": "",
+        "EXPO_PUBLIC_SUPABASE_URL": "",
+        "EXPO_PUBLIC_SUPABASE_ANON_KEY": ""
       }
     },
     "production": {
