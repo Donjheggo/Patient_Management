@@ -7,6 +7,7 @@ export async function GetScheduleById(schedule_id: string) {
       .from("doctor_schedules")
       .select("*")
       .eq("id", schedule_id)
+      .eq("available", "TRUE")
       .single();
 
     if (error) {

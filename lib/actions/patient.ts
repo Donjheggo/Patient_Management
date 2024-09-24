@@ -11,13 +11,11 @@ export async function GetPatientById(user_id: string) {
       .single();
 
     if (error) {
-      Alert.alert(error.message)
       return null;
     }
     return data || null;
   } catch (error) {
     if (error instanceof Error) {
-      Alert.alert(error.message)
       return null;
     }
   }

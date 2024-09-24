@@ -1,14 +1,16 @@
 import { SafeAreaView, ScrollView, View } from "react-native";
 import { Text } from "~/components/ui/text";
+import AppointmentForm from "~/components/book/appointment-form";
 import { usePatient } from "~/context/patient-context";
 import { Redirect } from "expo-router";
-import AppointmentForm from "~/components/book/appointment-form";
 
 export default function Screen() {
-  const { patient } = usePatient();
+  const { patient, loading } = usePatient();
 
-  if (!patient) {
-    return <Redirect href="/(tabs)/patient-registration" />;
+  if (!loading) {
+    if (!patient) {
+      return <Redirect href="/(tabs)/patient-registration" />;
+    }
   }
 
   return (

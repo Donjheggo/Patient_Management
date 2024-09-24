@@ -6,7 +6,7 @@ import { Text } from "~/components/ui/text";
 import { Button } from "~/components/ui/button";
 import { Eye, EyeOff } from "lucide-react-native";
 import { supabase } from "~/lib/supabase";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 
 const SignUp = () => {
   const [isLoading, setLoading] = useState(false);
@@ -84,7 +84,7 @@ const SignUp = () => {
       </Button>
       <Text className="dark:text-secondary">
         Already have an account?
-        <Link href="/sign-in" className="text-primary">
+        <Link href="/sign-in" className="text-primary-foreground">
           {" "}
           Sign in
         </Link>

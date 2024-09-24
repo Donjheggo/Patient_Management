@@ -6,7 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import { Alert, SafeAreaView, ScrollView, View } from "react-native";
+import { Alert, SafeAreaView, ScrollView, View, Platform } from "react-native";
 import { Text } from "~/components/ui/text";
 import { CreatePatient } from "~/lib/actions/patient";
 import { useState } from "react";
@@ -17,12 +17,13 @@ import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import RNDateTimePicker from "@react-native-community/datetimepicker";
-import { usePatient } from "~/context/patient-context";
+import SignoutButton from "~/components/profile/signout-button";
 
 export default function Screen() {
-  const { user } = useAuth();
-  const { refetch } = usePatient();
   const router = useRouter();
+  const { user } = useAuth();
+  const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
+
   const [form, setForm] = useState<PatientFormT>({
     user_id: user?.id || "",
     name: "",
@@ -45,7 +46,6 @@ export default function Screen() {
     }
     const response = await CreatePatient(form);
     if (response === true) {
-      await refetch();
       router.push("/(tabs)/book");
     }
   };
@@ -82,17 +82,30 @@ export default function Screen() {
             <Label nativeID="birthdate" className="pb-1">
               Birth date
             </Label>
-            <View className="mr-auto">
-              <RNDateTimePicker
-                value={form.birthdate}
-                display="default"
-                mode="date"
-                onChange={(event, selectedDate) => {
-                  if (selectedDate)
-                    setForm({ ...form, birthdate: selectedDate });
-                }}
-              />
-            </View>
+            {Platform.OS === "android" && (
+              <Button
+                variant="outline"
+                onPress={() => setShowDatePicker(!showDatePicker)}
+                className="bg-transparent w-1/4"
+              >
+                <Text>{new Date(form.birthdate).toLocaleDateString()}</Text>
+              </Button>
+            )}
+            {showDatePicker && (
+              <View className="mr-auto">
+                <RNDateTimePicker
+                  value={form.birthdate}
+                  display="default"
+                  mode="date"
+                  onChange={(event, selectedDate) => {
+                    if (selectedDate) {
+                      setForm({ ...form, birthdate: selectedDate });
+                      setShowDatePicker(false);
+                    }
+                  }}
+                />
+              </View>
+            )}
           </View>
           <View>
             <Label nativeID="address" className="pb-1">
@@ -152,8 +165,9 @@ export default function Screen() {
           </View>
         </View>
         <Button className="mt-5" size="lg" onPress={handleSubmit}>
-          <Text>Submit</Text>
+          <Text style={{ fontSize: 18 }}>Submit</Text>
         </Button>
+        <SignoutButton />
       </ScrollView>
     </SafeAreaView>
   );
