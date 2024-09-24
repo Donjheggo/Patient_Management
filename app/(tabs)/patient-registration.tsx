@@ -91,7 +91,7 @@ export default function Screen() {
                 <Text>{new Date(form.birthdate).toLocaleDateString()}</Text>
               </Button>
             )}
-            {showDatePicker && (
+            {(showDatePicker || Platform.OS === 'ios') && (
               <View className="mr-auto">
                 <RNDateTimePicker
                   value={form.birthdate}

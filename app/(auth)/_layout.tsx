@@ -1,8 +1,10 @@
-import { View, Image, SafeAreaView, ScrollView, AppState } from "react-native";
+import { View, SafeAreaView, ScrollView, AppState } from "react-native";
 import { supabase } from "~/lib/supabase";
 import { router, Slot } from "expo-router";
 import { useAuth } from "~/context/auth-context";
 import { useEffect } from "react";
+import { usePatient } from "~/context/patient-context";
+import { Redirect } from "expo-router";
 
 AppState.addEventListener("change", (state) => {
   if (state === "active") {
@@ -14,12 +16,14 @@ AppState.addEventListener("change", (state) => {
 
 const AuthLayout = () => {
   const { user } = useAuth();
+  const { patient, loading } = usePatient();
 
-  useEffect(() => {
-    if (user) {
-      router.push("/(tabs)/book");
-    }
-  }, [user]);
+  if (user && !loading && patient){
+    return <Redirect href="/(tabs)/book"/>
+  }else if(user && !loading && !patient){
+    return <Redirect href="/(tabs)/patient-registration"/>
+  }
+
 
   return (
     <SafeAreaView className="h-full">

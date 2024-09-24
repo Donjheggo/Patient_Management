@@ -14,6 +14,7 @@ import MessageButton from "~/components/message-button";
 import AuthProvider from "~/context/auth-context";
 import BackButton from "~/components/back-button";
 import { usePathname } from "expo-router";
+import PatientProvider from "~/context/patient-context";
 
 const LIGHT_THEME: Theme = {
   dark: false,
@@ -70,37 +71,39 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
       <AuthProvider>
-        <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen
-            name="index"
-            options={{
-              title: "",
-            }}
-          />
-          <Stack.Screen
-            name="(auth)"
-            options={{
-              title: "",
-            }}
-          />
-          <Stack.Screen
-            name="(tabs)"
-            options={{
-              title: "",
-              headerShown:
-                pathname === "/messages"
-                  ? false
-                  : pathname === "/patient-registration"
-                  ? false
-                  : true,
-              headerLeft:
-                pathname !== "/book" ? () => <BackButton /> : () => "",
-              headerRight: () => <MessageButton />,
-            }}
-          />
-        </Stack>
-        <PortalHost />
+        <PatientProvider>
+          <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen
+              name="index"
+              options={{
+                title: "",
+              }}
+            />
+            <Stack.Screen
+              name="(auth)"
+              options={{
+                title: "",
+              }}
+            />
+            <Stack.Screen
+              name="(tabs)"
+              options={{
+                title: "",
+                headerShown:
+                  pathname === "/messages"
+                    ? false
+                    : pathname === "/patient-registration"
+                    ? false
+                    : true,
+                headerLeft:
+                  pathname !== "/book" ? () => <BackButton /> : () => "",
+                headerRight: () => <MessageButton />,
+              }}
+            />
+          </Stack>
+          <PortalHost />
+        </PatientProvider>
       </AuthProvider>
     </ThemeProvider>
   );

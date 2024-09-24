@@ -30,7 +30,12 @@ export default function PatientProvider({ children }: PropsWithChildren) {
   };
 
   useEffect(() => {
-    fetchUserPatient();
+    if (user?.id) {
+      fetchUserPatient();
+    } else {
+      setPatient(null);
+      setLoading(false);
+    }
   }, [user?.id]);
 
   return (

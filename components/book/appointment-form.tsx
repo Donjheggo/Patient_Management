@@ -88,7 +88,7 @@ export default function AppointmentForm() {
           Doctor
         </Label>
         <Select
-          value={{value: form.doctor_id, label: 'Select a Doctor'}}
+          defaultValue={{ value: "", label: "Select a Doctor" }}
           onValueChange={(value) =>
             setForm({
               ...form,
@@ -99,7 +99,7 @@ export default function AppointmentForm() {
           <SelectTrigger>
             <SelectValue
               className="text-foreground dark:text-white text-sm native:text-lg"
-              placeholder="Select a billing number"
+              placeholder="Select a Doctor"
             />
           </SelectTrigger>
           <SelectContent>
@@ -124,7 +124,7 @@ export default function AppointmentForm() {
             Doctor's Schedule
           </Label>
           <Select
-            value={{ value: form.schedule_id, label: "Select a Schedule" }}
+            defaultValue={{ value: "", label: "Select a Schedule" }}
             onValueChange={(value) =>
               setForm({
                 ...form,
