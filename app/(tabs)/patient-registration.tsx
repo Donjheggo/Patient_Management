@@ -11,18 +11,24 @@ import { Text } from "~/components/ui/text";
 import { CreatePatient } from "~/lib/actions/patient";
 import { useState } from "react";
 import { useAuth } from "~/context/auth-context";
-import { useRouter } from "expo-router";
+import { Redirect, useRouter } from "expo-router";
 import { Button } from "~/components/ui/button";
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import RNDateTimePicker from "@react-native-community/datetimepicker";
 import SignoutButton from "~/components/profile/signout-button";
+import { usePatient } from "~/context/patient-context";
 
 export default function Screen() {
   const router = useRouter();
   const { user } = useAuth();
+  const { patient, loading } = usePatient();
   const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
+
+  if(!loading && patient){
+    return <Redirect href="/(tabs)/book"/>
+  }
 
   const [form, setForm] = useState<PatientFormT>({
     user_id: user?.id || "",
@@ -91,7 +97,7 @@ export default function Screen() {
                 <Text>{new Date(form.birthdate).toLocaleDateString()}</Text>
               </Button>
             )}
-            {(showDatePicker || Platform.OS === 'ios') && (
+            {(showDatePicker || Platform.OS === "ios") && (
               <View className="mr-auto">
                 <RNDateTimePicker
                   value={form.birthdate}
