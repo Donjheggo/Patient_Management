@@ -66,9 +66,9 @@ const SignIn = () => {
             className="absolute right-1 top-1"
           >
             {showPassword ? (
-              <EyeOff color="#16a34a" />
+              <EyeOff color="#2563eb" />
             ) : (
-              <Eye color="#16a34a" />
+              <Eye color="#2563eb" />
             )}
           </Button>
         </View>

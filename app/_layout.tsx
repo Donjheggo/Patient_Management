@@ -15,6 +15,7 @@ import AuthProvider from "~/context/auth-context";
 import BackButton from "~/components/back-button";
 import { usePathname } from "expo-router";
 import PatientProvider from "~/context/patient-context";
+import HeaderLogo from "~/components/header-logo";
 
 const LIGHT_THEME: Theme = {
   dark: false,
@@ -90,6 +91,7 @@ export default function RootLayout() {
               name="(tabs)"
               options={{
                 title: "",
+
                 headerShown:
                   pathname === "/messages"
                     ? false
@@ -97,7 +99,9 @@ export default function RootLayout() {
                     ? false
                     : true,
                 headerLeft:
-                  pathname !== "/book" ? () => <BackButton /> : () => "",
+                  pathname !== "/book"
+                    ? () => <BackButton />
+                    : () => <HeaderLogo />,
                 headerRight: () => <MessageButton />,
               }}
             />

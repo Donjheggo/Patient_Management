@@ -6,7 +6,7 @@ export default function MessageButton() {
   const router = useRouter();
   return (
     <Pressable onPress={() => router.push("/(tabs)/messages")}>
-      <MessageSquareMore color="#2d9c4b" />
+      <MessageSquareMore color="#2563eb" />
     </Pressable>
   );
 }

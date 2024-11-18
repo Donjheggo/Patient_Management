@@ -1,10 +1,10 @@
 import { View, SafeAreaView, ScrollView, AppState } from "react-native";
 import { supabase } from "~/lib/supabase";
-import { router, Slot } from "expo-router";
+import { Slot } from "expo-router";
 import { useAuth } from "~/context/auth-context";
-import { useEffect } from "react";
 import { usePatient } from "~/context/patient-context";
 import { Redirect } from "expo-router";
+import { Image } from "expo-image";
 
 AppState.addEventListener("change", (state) => {
   if (state === "active") {
@@ -18,17 +18,21 @@ const AuthLayout = () => {
   const { user } = useAuth();
   const { patient, loading } = usePatient();
 
-  if (user && !loading && patient){
-    return <Redirect href="/(tabs)/book"/>
-  }else if(user && !loading && !patient){
-    return <Redirect href="/(tabs)/patient-registration"/>
+  if (user && !loading && patient) {
+    return <Redirect href="/(tabs)/book" />;
+  } else if (user && !loading && !patient) {
+    return <Redirect href="/(tabs)/patient-registration" />;
   }
 
-
   return (
-    <SafeAreaView className="h-full">
-      <ScrollView>
-        <View className="mt-10 flex justify-center items-center gap-5 p-6">
+    <SafeAreaView className="flex-1">
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }} className="flex">
+        <View className="flex-1 mt-10 items-center gap-5 p-6">
+          <Image
+            source={require("../../assets/images/icon.png")}
+            contentFit="contain"
+            style={{ width: 500, height: 200 }}
+          />
           <Slot />
         </View>
       </ScrollView>
