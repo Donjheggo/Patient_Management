@@ -165,6 +165,7 @@ export type AppointmentT = {
   patient_id: string;
   reason: string;
   doctor_id: string;
+  remarks?: string;
   schedule_id: string;
   status: "PENDING" | "ACCEPTED" | "COMPLETED";
 };

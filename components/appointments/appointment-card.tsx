@@ -50,6 +50,12 @@ export default function AppointmentCard({ item }: { item: AppointmentT }) {
       <Text className="text-xl mt-2 text-primary">
         <Text className="font-semibold text-xl">Status: </Text> {item.status}
       </Text>
+      {item.remarks && (
+        <Text className="text-xl">
+          <Text className="font-semibold text-xl">Remarks: </Text>
+          {item.remarks}
+        </Text>
+      )}
     </View>
   );
 }
